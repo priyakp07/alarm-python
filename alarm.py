@@ -7,6 +7,10 @@ from PIL import ImageTk, Image
 from datetime import datetime
 from time import sleep
 from pygame import mixer
+import pygame
+
+pygame.init()
+pygame.mixer.init()
 
 bg_color = '#fff'
 col1 = '#566FC6' 
@@ -103,7 +107,7 @@ rad1.place(x = 125, y = 95)
 
 def sound_alarm():
     mixer.music.load('Alarm-Clock.mp3')
-    mixer.music.play()
+    mixer.music.play(-1)
     selected.set(0)
 
 rad1 = Radiobutton(frame_body, font=('arial 10 bold'), value=2, text="Deactivate", bg=bg_color, command=deactivate_alarm, variable=selected)
@@ -132,9 +136,10 @@ def alarm():
                 if alarm_hour == hour:
                     if alarm_minute == minute:
                         if alarm_second == second:
-                            # print("Time to take a break")
                             sound_alarm()
         sleep(1)
+while pygame.mixer.music.get_busy():
+    pygame.time.Clock().tick(10)
 
 mixer.init()
 
