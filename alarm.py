@@ -1,4 +1,4 @@
-# CREATE A ALARM CLOCK BY USING PYTHON``
+# CREATE A ALARM CLOCK BY USING PYTHON
 
 from tkinter.ttk import*
 from tkinter import*
@@ -19,7 +19,7 @@ col2 = '#fff'
 # window
 window = Tk()
 window.title("ALARM CLOCK")
-window.geometry('350x150')
+window.geometry('750x550')
 window.configure(bg=bg_color)
 
 # frame
@@ -97,7 +97,7 @@ def activate_alarm():
     t.start()
 
 def deactivate_alarm():
-    print('Deactivate alarm: ' , selected.get())
+    print('Deactivate alarm: ')
     mixer.music.stop()
 
 selected = IntVar() 
@@ -116,7 +116,6 @@ rad1.place(x = 187, y = 95)
 def alarm():
     while True:
         control = 1
-        print(control)
 
         alarm_hour = c_hour.get()
         alarm_minute = c_min.get()
@@ -125,6 +124,8 @@ def alarm():
         alarm_period = str(alarm_period).upper()
 
         now = datetime.now()
+
+        print("Current second ", now.second)
 
         hour = now.strftime("%I")
         minute = now.strftime("%M")
